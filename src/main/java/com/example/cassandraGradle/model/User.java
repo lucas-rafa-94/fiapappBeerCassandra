@@ -1,6 +1,7 @@
 package com.example.cassandraGradle.model;
 
-import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
+import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 import java.io.Serializable;
@@ -8,27 +9,29 @@ import java.io.Serializable;
 @Table("users")
 public class User implements Serializable{
 
-    @PrimaryKey
-    private String username;
+    private int idade;
+    @PrimaryKeyColumn(name = "email", type = PrimaryKeyType.PARTITIONED)
     private String email;
-    private String name;
+    private String nome;
+    @PrimaryKeyColumn(name = "password", type = PrimaryKeyType.PARTITIONED)
     private String password;
 
-    public User(String username, String email, String name, String password) {
-        this.username = username;
+    public User(int idade, String email, String nome, String password) {
+        this.idade = idade;
         this.email = email;
-        this.name = name;
+        this.nome = nome;
         this.password = password;
     }
 
-    public User() { }
-
-    public String getUsername() {
-        return username;
+    public User() {
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
     public String getEmail() {
@@ -39,12 +42,12 @@ public class User implements Serializable{
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getPassword() {

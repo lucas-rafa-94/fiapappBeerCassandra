@@ -5,8 +5,6 @@ import com.example.cassandraGradle.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -14,20 +12,19 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @RequestMapping(value = "/insert", method = RequestMethod.POST)
+    @PostMapping("/insert")
     public void insert(@RequestBody User user){
             service.insert(user);
     }
 
-    @RequestMapping(value = "/find/{username}", method = RequestMethod.GET)
-    public Optional<User> findByUsername(@PathVariable(value="username") String username){
-        return service.findByUsername(username);
+    @GetMapping("/find/{email}")
+    public User findByEmail(@PathVariable(value="email") String email){
+        return service.findByEmail(email);
     }
 
-    @RequestMapping(value = "/find", method = RequestMethod.GET)
-    public User findByUsernameAndPassword(@RequestParam String username, @RequestParam String password){
-        return service.findByUsernameEqualsAndAndPassword(username,password);
+    @GetMapping("/find")
+    public User findByUsernameAndPassword(@RequestParam String email, @RequestParam String password){
+        return service.findByEmailEqualsAndAndPassword(email,password);
     }
-
 
 }

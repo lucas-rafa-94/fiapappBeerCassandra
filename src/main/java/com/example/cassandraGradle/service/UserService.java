@@ -5,8 +5,6 @@ import com.example.cassandraGradle.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class UserService{
 
@@ -17,11 +15,11 @@ public class UserService{
         userRepository.save(user);
     }
 
-    public Optional<User> findByUsername(String username){
-        return userRepository.findById(username);
+    public User findByEmail(String email){
+        return userRepository.findByEmail(email);
     }
 
-    public User findByUsernameEqualsAndAndPassword(String username, String password) {
-        return userRepository.findByUsernameAndPassword(username,password);
+    public User findByEmailEqualsAndAndPassword(String email, String password) {
+        return userRepository.findByEmailEqualsAndAndPassword(email,password);
     }
 }
