@@ -26,6 +26,7 @@ public class BeerController {
 
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public void delete(@RequestBody Beer beer){
+        System.out.println(beer.getMarca());
         beerService.deleteBeer(beer);
     }
 
