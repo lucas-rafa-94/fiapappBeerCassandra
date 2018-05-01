@@ -11,5 +11,6 @@ import java.util.List;
 public interface BeersRepository extends CrudRepository<Beer,String >{
     @Query("update beers set preco = ?0, valormedida = ?1, unidademedida = ?2 where marca = ?3 and tipoEmbalagem = ?4")
     void updateBeer(double preco, double valormedida, String unidademedida, String marca, String tipoEmbalagem);
+    void deleteByMarcaEqualsAndAndTipoEmbalagem(String marca, String tipoEmbalagem);
     List<Beer> findByMarca(String marca);
 }

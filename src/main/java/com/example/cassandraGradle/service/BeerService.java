@@ -27,4 +27,8 @@ public class BeerService {
     public void updateBeer(Beer beer){
         beersRepository.updateBeer(beer.getPreco(),beer.getValorMedida(),beer.getUnidadeMedida(),beer.getMarca(), beer.getTipoEmbalagem());
     }
+
+    public void deleteBeer(Beer beer){
+        beersRepository.deleteByMarcaEqualsAndAndTipoEmbalagem(beer.getMarca(),beer.getTipoEmbalagem());
+    }
 }
