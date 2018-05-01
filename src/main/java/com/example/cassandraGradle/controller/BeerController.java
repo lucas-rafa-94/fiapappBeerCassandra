@@ -26,7 +26,7 @@ public class BeerController {
 
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public void delete(@RequestBody Beer beer){
-        beerService.updateBeer(beer);
+        beerService.deleteBeer(beer);
     }
 
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
