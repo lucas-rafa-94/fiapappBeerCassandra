@@ -19,6 +19,11 @@ public class BeerController {
         beerService.insert(beer);
     }
 
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public void upadate(@RequestBody Beer beer){
+        beerService.updateBeer(beer);
+    }
+
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     public List<Beer> findAll(){
         return beerService.findAll();
